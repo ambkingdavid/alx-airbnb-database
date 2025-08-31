@@ -1,0 +1,1 @@
+# SQL script to seed your AirBnB-style database with realistic sample data. This includes multiple users, properties, bookings, payments, reviews, and messages—designed to simulate real-world usage.
