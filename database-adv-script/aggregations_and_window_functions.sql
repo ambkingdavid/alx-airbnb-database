@@ -6,10 +6,16 @@ FROM bookings
 GROUP BY user_id
 ORDER BY total_bookings DESC;
 
--- This query retrieves the top 5 properties with the highest average ratings.
+-- This query retrieves users who have made more than 3 bookings.
 SELECT 
     property_id,
-    COUNT(*) AS booking_count,
-    RANK() OVER (ORDER BY COUNT(*) DESC) AS booking_rank
-FROM bookings
-GROUP BY property_id;
+    booking_count,
+    ROW_NUMBER() OVER (ORDER BY booking_count DESC) AS row_num
+FROM (
+    SELECT 
+        property_id,
+        COUNT(*) AS booking_count
+    FROM bookings
+    GROUP BY property_id
+) AS ranked_properties;
+
