@@ -10,6 +10,8 @@ SELECT
     users.email
 FROM bookings
 INNER JOIN users ON bookings.user_id = users.user_id;
+ORDER BY bookings.start_date DESC;
+
 
 -- This query retrieves all properties along with their reviews, including properties without reviews.
 SELECT 
@@ -21,8 +23,9 @@ SELECT
     reviews.comment
 FROM properties
 LEFT JOIN reviews ON properties.property_id = reviews.property_id;
+ORDER BY properties.name ASC;
 
--- This query retrieves all users and their bookings, including users without bookings and bookings without users.
+
 SELECT 
     users.user_id,
     users.first_name,
@@ -33,3 +36,4 @@ SELECT
     bookings.total_price
 FROM users
 FULL OUTER JOIN bookings ON users.user_id = bookings.user_id;
+ORDER BY users.user_id NULLS LAST;
