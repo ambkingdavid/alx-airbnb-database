@@ -18,4 +18,3 @@ FROM (
     FROM bookings
     GROUP BY property_id
 ) AS ranked_properties;
-
